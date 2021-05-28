@@ -5,5 +5,5 @@ setup(
    version='1.0',
    description='Some useful scripts',
    author='jwb4335',
-   packages=['to_tex','to_excel','winsor']  #same as name
+   py_modules=['to_tex','to_excel','winsor']  #same as name
 )
