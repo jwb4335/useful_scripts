@@ -5,5 +5,8 @@ setup(
    version='1.0',
    description='Some useful scripts',
    author='jwb4335',
-   py_modules=['to_tex','to_excel','winsor']  #same as name
+   packages = find_packages(
+        where = 'useful_scripts',
+        include = ['to_tex','to_excel','winsor'],
+    )
 )
