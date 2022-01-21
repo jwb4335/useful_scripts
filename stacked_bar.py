@@ -126,8 +126,8 @@ def barh_plot(ax, data, colors=None, total_width=0.8, single_width=1, legend=Tru
     import seaborn as sns
     import numpy as np
     default_colors = sns.color_palette('bright')
-    order = [2,3,0] + [x for x in np.arange(len(default_colors)) if x not in [2,3,0]]
-    default_colors = [default_colors[i] for i in order]
+    #order = [2,3,0] + [x for x in np.arange(len(default_colors)) if x not in [2,3,0]]
+    #default_colors = [default_colors[i] for i in order]
     # Check if colors where provided, otherwhise use the default color cycle
     if colors is None:
         colors = default_colors
