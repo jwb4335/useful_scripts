@@ -2,7 +2,10 @@
 import pathlib
 
 def sumstats(Data,stats,file_name,rounding=3,float_f="{:,.3f}".format):
-
+    
+    float_f = "{:,." + str(rounding) + "f}"
+    float_f = float_f.format
+    
     pctiles = [k for k in stats if "%" in k]
     stats_dict = {'count':'N',
                   'mean':'Mean',
@@ -53,7 +56,9 @@ def sumstats(Data,stats,file_name,rounding=3,float_f="{:,.3f}".format):
     
 def table(Data,file_name,rounding=3,float_f="{:,.3f}".format,keep_index=True):
     
-    
+        
+    float_f = "{:,." + str(rounding) + "f}"
+    float_f = float_f.format
     table = round(Data,rounding)    
     
     lastcol = table.columns.tolist()[len(table.columns.tolist())-1].replace("%","\%")
@@ -86,7 +91,9 @@ def table(Data,file_name,rounding=3,float_f="{:,.3f}".format,keep_index=True):
 
 def table_return_text(Data,file_name,rounding=3,float_f="{:,.3f}".format,keep_index=True):
     
-    
+        
+    float_f = "{:,." + str(rounding) + "f}"
+    float_f = float_f.format
     table = round(Data,rounding)    
     
     lastcol = table.columns.tolist()[len(table.columns.tolist())-1].replace("%","\%")
