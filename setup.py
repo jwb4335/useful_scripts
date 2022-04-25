@@ -8,6 +8,6 @@ setup(
    author='jwb4335',
    packages = find_packages(
         where = 'useful_scripts'
-   )
+   ),
    py_modules = ['to_tex','winsor','to_excel']
 )
