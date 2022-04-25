@@ -7,7 +7,6 @@ setup(
    description='Some useful scripts',
    author='jwb4335',
    packages = find_packages(
-        where = 'useful_scripts',
-        include = ['to_tex','to_excel','winsor'],
-    )
+        where = 'useful_scripts'
+   )
 )
