@@ -9,4 +9,5 @@ setup(
    packages = find_packages(
         where = 'useful_scripts'
    )
+   py_modules = ['to_tex','winsor','to_excel']
 )
