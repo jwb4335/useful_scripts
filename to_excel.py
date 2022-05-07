@@ -2,6 +2,8 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
                        truncate_sheet=False, 
                        **to_excel_kwargs):
     """
+    https://gist.github.com/fredpedroso/590e54d4f07d0ae2d20d0ec0b190d5ff
+    
     Append a DataFrame [df] to existing Excel file [filename]
     into [sheet_name] Sheet.
     If [filename] doesn't exist, then this function will create it.
@@ -30,7 +32,7 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
     if 'engine' in to_excel_kwargs:
         to_excel_kwargs.pop('engine')
 
-    writer = pd.ExcelWriter(filename, engine='openpyxl')
+    writer = pd.ExcelWriter(filename, engine='openpyxl', mode='a')
 
     # Python 2.x: define [FileNotFoundError] exception if it doesn't exist 
     try:
