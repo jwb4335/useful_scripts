@@ -43,24 +43,24 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
 
     try:
         # try to open an existing workbook
-        writer.book = load_workbook(filename)
+        writer.workbook = load_workbook(filename)
 
         # get the last row in the existing Excel sheet
         # if it was not specified explicitly
-        if startrow is None and sheet_name in writer.book.sheetnames:
-            startrow = writer.book[sheet_name].max_row
+        if startrow is None and sheet_name in writer.workbook.sheetnames:
+            startrow = writer.workbook[sheet_name].max_row
 
         # truncate sheet
-        if truncate_sheet and sheet_name in writer.book.sheetnames:
+        if truncate_sheet and sheet_name in writer.workbook.sheetnames:
             # index of [sheet_name] sheet
-            idx = writer.book.sheetnames.index(sheet_name)
+            idx = writer.workbook.sheetnames.index(sheet_name)
             # remove [sheet_name]
-            writer.book.remove(writer.book.worksheets[idx])
+            writer.workbook.remove(writer.workbook.worksheets[idx])
             # create an empty sheet [sheet_name] using old index
-            writer.book.create_sheet(sheet_name, idx)
+            writer.workbook.create_sheet(sheet_name, idx)
 
         # copy existing sheets
-        writer.sheets = {ws.title:ws for ws in writer.book.worksheets}
+        writer.sheets = {ws.title:ws for ws in writer.workbook.worksheets}
     except FileNotFoundError:
         # file does not exist yet, we will create it
         pass
