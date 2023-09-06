@@ -32,13 +32,7 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
     if 'engine' in to_excel_kwargs:
         to_excel_kwargs.pop('engine')
 
-    writer = pd.ExcelWriter(filename, engine='openpyxl', mode='a')
-
-    # Python 2.x: define [FileNotFoundError] exception if it doesn't exist 
-    try:
-        FileNotFoundError
-    except NameError:
-        FileNotFoundError = IOError
+    writer = pd.ExcelWriter(filename, engine='openpyxl', mode='a',if_sheet_exists='replace')
 
 
     try:
@@ -60,7 +54,7 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
             writer.workbook.create_sheet(sheet_name, idx)
 
         # copy existing sheets
-        writer.sheets = {ws.title:ws for ws in writer.workbook.worksheets}
+        writer.workbook.sheets = {ws.title:ws for ws in writer.workbook.worksheets}
     except FileNotFoundError:
         # file does not exist yet, we will create it
         pass
@@ -72,4 +66,4 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
     df.to_excel(writer, sheet_name, startrow=startrow, **to_excel_kwargs)
 
     # save the workbook
-    writer.save()
+    writer.close()
