@@ -32,7 +32,7 @@ def modify_sheet(filename, df, sheet_name='Sheet1', startrow=None,
     if 'engine' in to_excel_kwargs:
         to_excel_kwargs.pop('engine')
 
-    writer = pd.ExcelWriter(filename, engine='openpyxl', mode='a',if_sheet_exists='replace')
+    writer = pd.ExcelWriter(filename, engine='openpyxl', mode='a',if_sheet_exists='overlay')
 
 
     try:
